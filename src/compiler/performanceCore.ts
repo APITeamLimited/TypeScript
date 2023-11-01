@@ -83,22 +83,23 @@ function tryGetWebPerformanceHooks(): PerformanceHooks | undefined {
 }
 
 function tryGetNodePerformanceHooks(): PerformanceHooks | undefined {
-    if (isNodeLikeSystem()) {
-        try {
-            const { performance, PerformanceObserver } = require("perf_hooks") as typeof import("perf_hooks");
-            if (hasRequiredAPI(performance, PerformanceObserver)) {
-                return {
-                    // By default, only write native events when generating a cpu profile or using the v8 profiler.
-                    shouldWriteNativeEvents: false,
-                    performance,
-                    PerformanceObserver,
-                };
-            }
-        }
-        catch {
-            // ignore errors
-        }
-    }
+    return
+    // if (isNodeLikeSystem()) {
+    //     try {
+    //         const { performance, PerformanceObserver } = require("perf_hooks") as typeof import("perf_hooks");
+    //         if (hasRequiredAPI(performance, PerformanceObserver)) {
+    //             return {
+    //                 // By default, only write native events when generating a cpu profile or using the v8 profiler.
+    //                 shouldWriteNativeEvents: false,
+    //                 performance,
+    //                 PerformanceObserver,
+    //             };
+    //         }
+    //     }
+    //     catch {
+    //         // ignore errors
+    //     }
+    // }
 }
 
 // Unlike with the native Map/Set 'tryGet' functions in corePublic.ts, we eagerly evaluate these
